@@ -1,5 +1,5 @@
 # ADS1248 CircuitPython library
-# Link
+# https://github.com/AdinAck/ADS1248-CircuitPython
 # Please feel free to post issues or questions on the GitHub repository.
 # By Adin Ackerman
 # ======================================================================================================================
