@@ -80,7 +80,7 @@ class ADS1248:
         for adc in ADS1248.list:
             adc.cs.value = True
 
-    def fetchAll(ref, inputs):
+    def fetchAll(ref, inputs, raw=False):
         voltages = []
         for i in range(len(inputs)):
             ADS1248.start.value = True
@@ -89,12 +89,15 @@ class ADS1248:
 
             ADS1248.start.value = False
             for adc in ADS1248.list:
-                voltages.append(adc.receive())
+                if raw:
+                    voltages.append(adc.receive())
+                else:
+                    voltages.append(adc.vref/(2**23)*adc.receive()+adc.vref)
 
         return voltages
 
-    def __init__(self, cs_pin, drdy_pin):
-        self.vref = None
+    def __init__(self, cs_pin, drdy_pin, vref=2.048):
+        self.vref = vref
         ADS1248.list.append(self)
 
         # CS pin
@@ -153,14 +156,16 @@ class ADS1248:
         if ADS1248.verbose:
             print("[ADC1248] [{0}] [WREG] Wrote {1} to register {2}.".format(ADS1248.list.index(self),data,register))
 
-    def fetch(self, ref, inputs):
+    def fetch(self, ref, inputs, raw=False):
         result = []
         for i in range(len(inputs)):
             ADS1248.start.value = True
             self.wreg(0,[inputs[i]*8+ref])
             ADS1248.start.value = False
-            result.append(self.receive())
-
+            if raw:
+                result.append(self.receive())
+            else:
+                result.append(self.vref/(2**23)*self.receive()+self.vref)
         return result
 
     def receive(self):

@@ -21,4 +21,4 @@ adc.wreg(2,[0x30,0x00]) # Write register 2 with 0x30 (configure vref) and regist
 print(adc.rreg(0,16)) # Read all registers
 
 # Read inputs A0 and A2 in relation to A0 and convert to voltage from all ADC objects
-print([2.048/(2**23)*i+2.048 for i in ADS1248.fetchAll(0,[0,2])])
+print(ADS1248.fetchAll(0,[0,2]))
