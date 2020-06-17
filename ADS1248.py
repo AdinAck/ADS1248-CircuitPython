@@ -4,10 +4,10 @@
 # By Adin Ackerman
 # ======================================================================================================================
 
-import time
 import board
 import digitalio
 import busio
+import time
 
 class ADS1248:
     list = []
