@@ -10,9 +10,9 @@ while not spi.try_lock():
 spi.configure(baudrate=2000000, phase=1, polarity=0)
 
 # ADS1248
-adc = ADS1248(board.D31, board.D37) # Define ADC objects first
+ADS1248.setup(spi, board.D33, board.D35) # Set up spi, start pin, etc
+adc = ADS1248(board.D31, board.D37) # Define ADC objects
 # Declare more ADC's (if applicable) here
-ADS1248.init(spi, board.D33, board.D35) # Initialize ADC group
 ADS1248.verbose = True
 
 # Send commands to individual ADC

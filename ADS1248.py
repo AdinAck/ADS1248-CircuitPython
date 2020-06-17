@@ -13,9 +13,12 @@ class ADS1248:
     list = []
     verbose = False
 
-    def configure(spi, start_pin, reset_pin):
+    def setup(spi, start_pin, reset_pin, freq=2000000):
         # SPI
         ADS1248.spi = spi
+        while not ADS1248.spi.try_lock():
+            pass
+        ADS1248.spi.configure(baudrate=ADS1248.freq, phase=1, polarity=0)
 
         # Start pin
         ADS1248.start = digitalio.DigitalInOut(start_pin)
