@@ -14,7 +14,7 @@ ADS1248.verbose = True
 
 # Send commands to individual ADC
 adc.wakeup()
-adc.wreg(2,[0x30,0x00]) # Write register 2 with 0x30 (configure vref) and register 3 with 0x00 (conversion rate)
+adc.wreg(2,[0x30,0x01]) # Write register 2 with 0x30 (configure vref) and register 3 with 0x00 (conversion rate)
 print(adc.rreg(0,16)) # Read all registers
 
 # Read inputs A0 and A2 in relation to A0 and convert to voltage from all ADC objects
