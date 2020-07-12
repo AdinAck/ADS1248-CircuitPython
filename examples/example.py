@@ -8,7 +8,7 @@ spi = busio.SPI(board.SCK, board.MOSI, board.MISO)
 
 # ADS1248
 ADS1248.setup(spi, board.D33, board.D35, freq=2000000) # Set up spi, start pin, etc
-adc = ADS1248(board.D31, board.D37) # Define ADC objects
+adc = ADS1248(board.D31, board.D37, 2.048) # Define ADC objects
 # Declare more ADC's (if applicable) here
 ADS1248.verbose = True
 
