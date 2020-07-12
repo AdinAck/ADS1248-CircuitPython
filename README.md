@@ -36,9 +36,9 @@ adc.wreg(2,[0x30,0x00]) # Write register 2 with 0x30 (configure vref) and regist
 print(adc.rreg(0,16)) # Read all registers
 ```
 
-Refer to the wiki for a detailed list of all available methods.
 
 To communicate with all ADC objects, use the "All" methods and apply them to the ADS1248 class:
 ```
 ADS1248.fetchAll(0,[0,2])
 ```
+Refer to the wiki for a detailed list of all available methods.
