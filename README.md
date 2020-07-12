@@ -26,7 +26,7 @@ ADS1248.setup(spi, board.D33, board.D35, freq=2000000)
 
 Now you will create your individual ADC objects, each object will represent a seperate ADC. If you only have 1 ADC you still must create an ADC object:
 ```
-adc = ADS1248(board.D31, board.D37)
+adc = ADS1248(board.D31, board.D37, vref=2.048)
 ```
 
 To communicate with a single ADC object, simply apply methods to the object:
